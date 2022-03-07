@@ -1,0 +1,198 @@
+﻿@model MortgageCalculator.Dto.Mortgage
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal col-md-6">
+    <h4>Mortgage</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-6" })
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.MortgageType, "Mortgage Type", htmlAttributes: new { @class = "control-label col-md-6" })
+        <div class="col-md-6">
+            @Html.EnumDropDownListFor(model => model.MortgageType, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.MortgageType, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.InterestRepayment, "Interest Repayment", htmlAttributes: new { @class = "control-label col-md-6" })
+        <div class="col-md-6">
+            @Html.EnumDropDownListFor(model => model.InterestRepayment, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.InterestRepayment, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EffectiveStartDate, "Effective Start Date", htmlAttributes: new { @class = "control-label col-md-6" })
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.EffectiveStartDate, "Effective Start Date", new { htmlAttributes = new { @class = "form-control datepicker", @autocomplete = "off", @placeholder = "dd-mm-yyyy" } })
+            @Html.ValidationMessageFor(model => model.EffectiveStartDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EffectiveEndDate, "Effective End Date", htmlAttributes: new { @class = "control-label col-md-6" })
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.EffectiveEndDate, new { htmlAttributes = new { @class = "form-control datepicker", @autocomplete = "off", @placeholder = "dd-mm-yyyy" } })
+            @Html.ValidationMessageFor(model => model.EffectiveEndDate, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.TermsInMonths, "Terms In Months", htmlAttributes: new { @class = "control-label col-md-6" })
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.TermsInMonths, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.TermsInMonths, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CancellationFee, "Cancellation Fee", htmlAttributes: new { @class = "control-label col-md-6" })
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.CancellationFee, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+            @Html.ValidationMessageFor(model => model.CancellationFee, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.EstablishmentFee, "Establishment Fee", htmlAttributes: new { @class = "control-label col-md-6" })
+        <div class="col-md-6">
+            @Html.EditorFor(model => model.EstablishmentFee, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+            @Html.ValidationMessageFor(model => model.EstablishmentFee, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.IsActive, "Is Active", htmlAttributes: new { @class = "control-label col-md-6" })
+        <div class="col-md-6">
+            <div class="checkbox">
+                @Html.EditorFor(model => model.IsActive)
+                @Html.ValidationMessageFor(model => model.IsActive, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <input type="hidden" name="monthlypayment" id="monthlypayment" />
+
+    <div class="form-group">
+        <div class="col-md-offset-6 col-md-4">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+        @Html.ActionLink("Back to List", "MortgageList")
+    </div>  
+        
+   
+</div>
+
+    <div class="form-horizontal col-md-6">
+        <h4>
+        </h4>
+        <br />
+        <br />
+        <br />
+        <div class="form-group">
+            @Html.LabelFor(model => model.LoanAmount, "Loan Amount", htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.LoanAmount, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+                @Html.ValidationMessageFor(model => model.LoanAmount, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.LoanDuration, "Loan Duration", htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.LoanDuration, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+                @Html.ValidationMessageFor(model => model.LoanDuration, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.InterestRate, "Interest Rate", htmlAttributes: new { @class = "control-label col-md-6" })
+            <div class="col-md-6">
+                @Html.EditorFor(model => model.InterestRate, new { htmlAttributes = new { @class = "form-control", @autocomplete = "off" } })
+                @Html.ValidationMessageFor(model => model.InterestRate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-6 col-md-4">
+                <input type="button" value="Calculate" class="btn btn-primary" id="btnCalculate" onclick="interestCalculation()" />
+            </div>
+        </div>
+
+        <h1>
+        </h1>
+        <br>
+        <table class="table col-md-offset-2">
+            <tr>
+                <th>
+                    Total Payment
+                </th>
+                <th>
+                    Amount Paid
+                </th>
+            </tr>
+                <tr>
+                    <td>
+                       <label id="totalPayment"></label>
+                    </td>
+                    <td>
+                        <label id="amountPaid"></label>
+                    </td>
+                </tr>
+            
+
+        </table>
+
+
+    </div>
+
+}
+
+<div class="form-horizontal">
+  
+</div>
+<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+
+@section scripts{
+
+    <script src="~/Scripts/jquery-ui-1.13.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".datepicker").datepicker({
+                dateFormat: "dd-mm-yy",
+                changemonth: true,
+                changeyear: true
+            });
+        });
+
+        function interestCalculation() {
+            var calculation = ($('#LoanAmount').val() * (Math.pow((1 + $('#InterestRate').val() / 12), $('#LoanDuration').val()) * $('#InterestRate').val()) / (12 * (Math.pow((1 + $('#InterestRate').val() / 12), $('#LoanDuration').val()) - 1))).toFixed(2);
+         
+            $('#amountPaid').text(calculation);
+            var totalpayment = ($('#LoanAmount').val() * $('#LoanDuration').val()).toFixed(2);
+
+            $('#totalPayment').text(totalpayment);
+        }
+
+
+        
+
+
+    </script>
+}
